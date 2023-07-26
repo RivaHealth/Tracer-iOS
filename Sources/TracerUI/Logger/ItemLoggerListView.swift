@@ -6,6 +6,7 @@
 //  Copyright © 2018 Keepsafe Inc. All rights reserved.
 //
 
+import Tracer
 import UIKit
 
 final class ItemLoggerListView: UIView, Viewing {
