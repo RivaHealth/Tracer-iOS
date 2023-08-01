@@ -19,12 +19,16 @@ final class ItemLoggerListPresenter: Presenting {
     // MARK: - Presenting
     
     func listenForChanges() {
-        TraceUISignals.Logger.itemLogged.listen { loggedItem in
+        TraceUISignals.Logger.itemLogged.listen { [weak self] loggedItem in
+            guard let self else { return }
+        
             DispatchQueue.main.async {
                 self.view.display(loggedItem: loggedItem)
             }
         }
-        TraceUISignals.UI.clearLog.listen { _ in
+        TraceUISignals.UI.clearLog.listen { [weak self] _ in
+            guard let self else { return }
+        
             DispatchQueue.main.async {
                 self.view.clearAll()
             }
