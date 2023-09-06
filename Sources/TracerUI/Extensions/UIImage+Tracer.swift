@@ -10,7 +10,7 @@ import UIKit
 
 extension UIImage {
     static func inBundle(named name: String) -> UIImage {
-        guard let image = UIImage(named: name, in: Bundle(for: TraceUI.self), compatibleWith: nil) else {
+        guard let image = UIImage(named: name, in: .module, compatibleWith: nil) else {
             fatalError("Missing an image in the framework")
         }
         return image
